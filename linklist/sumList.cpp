@@ -1,7 +1,14 @@
+/*
+You have two numbers represented by a linked list, where each node contains a
+single digit. The digits are stored in reverse order, such that the 1's digit
+is at the head of the list. Write  function that adds the tow numbers and 
+returns the sum as a linked list. 
+*/
 #include <iostream>
 
 using namespace std;
 
+//Node class to represent a single node of a singly integer link list
 class Node
 {
 public:
@@ -9,13 +16,14 @@ public:
     Node *next;
     Node(int k);
 };
-
+//Constructor
 Node::Node(int k)
 {
     data = k;
     next = NULL;
 }
 
+//insert data at end
 void insert(Node* &head,int data){
     Node* n = new Node(data);
     if(head == NULL){head = n; return;}
@@ -25,6 +33,7 @@ void insert(Node* &head,int data){
     return;
 }
 
+//print the link list
 void print(Node *head){
     while(head!=NULL){
         cout << head->data << "->";
@@ -32,6 +41,8 @@ void print(Node *head){
     }
     cout << "NULL" << endl;
 }
+
+//Function to get the length of the linklist
 int length(Node *head){
     int len = 0;
     while(head!=NULL){
@@ -40,6 +51,8 @@ int length(Node *head){
     }
     return len;
 }
+
+//Fuction to make same length for both n1 and n2 lists 
 void makeSameLength(Node *n1, Node* n2){
     int len1= length(n1);
     int len2= length(n2);
@@ -61,6 +74,7 @@ void makeSameLength(Node *n1, Node* n2){
     }
 }
 
+//Function to add two lists
 void sumlist(Node *n1, Node *n2, int d){
     int sum = n1->data + n2->data + d;
     n1->data = sum % 10;
@@ -72,10 +86,14 @@ void sumlist(Node *n1, Node *n2, int d){
     sumlist(n1->next,n2->next,d);
 }
 
+//Function to add two lists
 void sumlist(Node *n1, Node *n2){
     int d = 0;
+    makeSameLength(n1,n2);
     sumlist(n1,n2,d);
 }
+
+//Create a linklist given int num
 Node * createList(int num){
     Node *head = NULL;
     while(num!=0){
@@ -94,9 +112,6 @@ int main(){
     cin >> num2;
     Node *list1 = createList(num1);
     Node *list2 = createList(num2);
-    print(list1);
-    print(list2);
-    makeSameLength(list1,list2);
     print(list1);
     print(list2);
     sumlist(list1,list2);
