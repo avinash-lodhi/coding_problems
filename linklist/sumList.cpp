@@ -62,7 +62,7 @@ void makeSameLength(Node *n1, Node* n2){
 }
 
 void sumlist(Node *n1, Node *n2, int d){
-    int sum = n1->data + n2->data;
+    int sum = n1->data + n2->data + d;
     n1->data = sum % 10;
     d = sum/10;
     if(n1->next == NULL){
