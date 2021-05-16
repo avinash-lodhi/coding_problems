@@ -38,7 +38,7 @@ void print(Node *head){
 }
 
 //Funtion to check palindrome
-bool isPalindrome(Node* &head,int size, int middle, bool even, int &itr){
+bool isPalindrome(Node* &head,int size, int middle, bool even, int itr){
     int data;
     if(itr < middle){
         data = head->data;
@@ -51,7 +51,7 @@ bool isPalindrome(Node* &head,int size, int middle, bool even, int &itr){
         }
         return false;
     } 
-    else if (itr == middle){
+    if (itr == middle){
         if(even){
             data = head->data;
             head = head->next;
@@ -77,7 +77,7 @@ bool isPalindrome(Node *head){
 
 int main(){
     Node *head = NULL;
-    insert(head,1);
+    insert(head,5);
     insert(head,2);
     insert(head,3);
     insert(head,9);
