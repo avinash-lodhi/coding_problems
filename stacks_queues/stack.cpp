@@ -16,6 +16,11 @@ class Node{
 };
 
 class Stack{
+    /*
+    For now taking assumption that we are using only positive integers,
+    so returning -1 when stak is empty
+    TODO: throw exception instead of returning -1.
+    */
     private:
         Node *top = NULL;
         int minm = 2147483647;
@@ -33,7 +38,8 @@ class Stack{
         void display(){
             Node *temp = top;
             while(temp!=NULL){
-                cout << temp->data << "->";
+                cout << temp->data << "|" << temp->minm << " -> ";
+                temp = temp->next;
             }
             cout << "NULL" << endl;
         }
@@ -46,7 +52,7 @@ class Stack{
             if(!isEmpty()){
                 return top->data;
             }
-            return NULL;
+            return -1;
         }
 
         int pop(){
@@ -55,11 +61,11 @@ class Stack{
                 top = top->next;
                 return data;
             }
-            return NULL;
+            return -1;
         }
         
         int min(){
-            if(isEmpty) return NULL;
+            if(isEmpty()) return -1;
             return top->minm;
         }
 };
@@ -75,4 +81,7 @@ int main(){
     stk.push(9);
     stk.display();
     cout << stk.min() << endl;  
+    stk.pop();
+    stk.pop();
+    cout << stk.min() << endl;
 }
