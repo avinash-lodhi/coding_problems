@@ -22,9 +22,13 @@ class Stack{
     TODO: throw exception instead of returning -1.
     */
     private:
-        Node *top = NULL;
-        int minm = 2147483647;
+        Node *top;
+        int minm;
     public:
+        Stack(){
+            top = NULL;
+            minm = 2147483647;
+        }
         void push(int data){
             Node *n = new Node(data, minm);
             n->next = top;
