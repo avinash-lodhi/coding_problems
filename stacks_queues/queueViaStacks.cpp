@@ -54,6 +54,16 @@ class MyQueue{
 private:
     Stack *stk1;
     Stack *stk2;
+    void fillStack(){
+        int data;
+        if(stk2->isEmpty()){
+            data = stk1->pop();
+            while(data!=-1){
+                stk2->push(data);
+                data = stk1->pop();
+            }
+        }
+    }
 public:
     MyQueue(){
         stk1=new Stack();
@@ -62,18 +72,29 @@ public:
     void enqueue(int data){
         stk1->push(data);
     }
-    bool isEmpty(){
-        return stk1->isEmpty();
-    }
     int dequeue(){
-        if(isEmpty()){
-            return -1;
-        }
-        int data = stk1->pop();
-        while(data!=-1){
-            stk2->push(data);
-            data=stk1->pop();
-        }
-
+        fillStack();
+        return stk2->pop();
     }
 };
+
+int main(){
+    MyQueue *q = new MyQueue();
+    q->enqueue(1);
+    q->enqueue(2);
+    q->enqueue(3);
+    q->enqueue(4);
+    q->enqueue(5);
+    q->enqueue(6);
+    q->enqueue(7);
+    q->enqueue(8);
+    q->enqueue(9);
+    q->enqueue(10);
+    int data = q->dequeue();
+    while(data!=-1){
+        cout << data << "->";
+        data = q->dequeue();
+    }
+    cout << "NULL" << endl;
+    return 0;
+}
