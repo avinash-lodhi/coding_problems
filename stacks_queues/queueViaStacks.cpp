@@ -91,6 +91,7 @@ int main(){
     q->enqueue(9);
     q->enqueue(10);
     int data = q->dequeue();
+    q->enqueue(11);
     while(data!=-1){
         cout << data << "->";
         data = q->dequeue();
