@@ -12,13 +12,12 @@ bool decendent(TreeNode *q, TreeNode *p){
 
 TreeNode *firstAncestor(TreeNode *a, TreeNode *p, TreeNode *q){
     //function to return the first common ancenstor
-    if(a==NULL) return NULL;
-    if(a==p || a==q) return a;
+
+    if(a==p || a==q || a==NULL) return a;
     TreeNode *left_branch = firstAncestor(a->left,p,q);
     if (left_branch!=NULL && left_branch!=p && left_branch!=q) return left_branch;
     TreeNode *right_branch = firstAncestor(a->right,p,q);
     if(left_branch!=NULL && right_branch!=NULL) return a;
-    if(left_branch==NULL && right_branch==NULL) return NULL;
     return left_branch!=NULL ? left_branch:right_branch;
 }
 
