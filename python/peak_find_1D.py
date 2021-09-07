@@ -9,9 +9,9 @@ def find_peak(arr,start,end):
         return arr[mid] if arr[mid] > arr[mid+1] else None
     if mid == len(arr)-1:
         return arr[mid] if arr[mid] > arr[mid-1] else None
-    if mid>0 and arr[mid] < arr[mid-1]:
+    if arr[mid] < arr[mid-1]:
         return find_peak(arr,start,mid-1)
-    if mid<len(arr)-1 and arr[mid] < arr[mid+1]:
+    if arr[mid] < arr[mid+1]:
         return find_peak(arr,mid+1,end)
     return arr[mid]
     
